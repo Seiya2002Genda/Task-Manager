@@ -5,8 +5,8 @@ class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "change_this_secret_key_now_123")
 
     MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
-    MYSQL_USER = os.getenv("MYSQL_USER", "root")
-    MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "root1234")
+    MYSQL_USER = os.getenv("MYSQL_USER", "")
+    MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
     MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "task_manager")
 
     MAIL_SERVER = os.getenv("MAIL_SERVER", "smtp.gmail.com")
