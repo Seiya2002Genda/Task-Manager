@@ -2,8 +2,8 @@ class Config:
     SECRET_KEY = "secretkey123"
 
     MYSQL_HOST = "localhost"
-    MYSQL_USER = "root"
-    MYSQL_PASSWORD = "root1234"
+    MYSQL_USER = ""
+    MYSQL_PASSWORD = ""
     MYSQL_DATABASE = "task_manager"
 
     MAIL_SERVER = "smtp.gmail.com"
