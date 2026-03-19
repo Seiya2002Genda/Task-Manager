@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from Backend.Config import Config
 from Backend.CreateDatabase import CreateDatabase
@@ -32,4 +34,4 @@ def create_app():
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
