@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #eef2f7;
+    font-family: Arial, sans-serif;
+    color: #0f172a;
+    min-height: 100vh;
+}
+
+.topbar {
+    background: #1e3a8a;
+    color: #ffffff;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.topbar-nav {
+    display: flex;
+    gap: 18px;
+}
+
+.topbar-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.topbar-nav a:hover {
+    text-decoration: underline;
+}
+
+.account-page {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.account-card {
+    width: 100%;
+    max-width: 680px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+}
+
+.account-card h1 {
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #475569;
+    margin-bottom: 24px;
+}
+
+.info-grid {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.label {
+    color: #475569;
+    font-weight: bold;
+}
+
+.value {
+    word-break: break-all;
+}
+
+.account-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#copyEmailButton,
+.back-link {
+    padding: 12px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+#copyEmailButton {
+    background: #1e3a8a;
+    color: #ffffff;
+}
+
+.back-link {
+    background: #e2e8f0;
+    color: #0f172a;
+}

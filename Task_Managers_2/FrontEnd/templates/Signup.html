@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Task Managers 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Signup.css') }}">
+</head>
+<body>
+    <div class="auth-shell">
+        <div class="auth-card">
+            <h2>Create Account</h2>
+            <p class="subtitle">Start managing your tasks today.</p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-area">
+                        {% for category, message in messages %}
+                            <div class="flash-message {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" id="signupForm" novalidate>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" placeholder="Enter your email" required>
+                    <small class="error-text" id="emailError"></small>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" placeholder="Create password" required>
+                    <small class="error-text" id="passwordError"></small>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input id="confirm_password" type="password" name="confirm_password" placeholder="Confirm password" required>
+                    <small class="error-text" id="confirmPasswordError"></small>
+                </div>
+
+                <button type="submit" id="signupButton">Create Account</button>
+            </form>
+
+            <div class="auth-links">
+                <a href="{{ url_for('login.login') }}">Already have an account?</a>
+                <a href="{{ url_for('login.index') }}">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/Signup.js') }}"></script>
+</body>
+</html>

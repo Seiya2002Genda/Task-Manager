@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tasks - Task Managers 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ManageTask.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">Task Managers 2</div>
+        <nav class="topbar-nav">
+            <a href="{{ url_for('account.manage_account') }}">Account</a>
+            <a href="{{ url_for('login.logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <main class="task-page">
+        <section class="dashboard-card summary-card">
+            <h1>Your Tasks</h1>
+            <p class="subtitle">Track deadlines and progress clearly.</p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="stat-label">Total</span>
+                    <span class="stat-value">{{ tasks|length }}</span>
+                </div>
+                <div class="stat-box pending">
+                    <span class="stat-label">Pending</span>
+                    <span class="stat-value">{{ pending_count }}</span>
+                </div>
+                <div class="stat-box done">
+                    <span class="stat-label">Done</span>
+                    <span class="stat-value">{{ done_count }}</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-card add-task-card">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-area">
+                        {% for category, message in messages %}
+                            <div class="flash-message {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" id="taskForm" class="task-form" novalidate>
+                <input
+                    type="text"
+                    id="taskInput"
+                    name="task"
+                    placeholder="Enter a new task..."
+                    maxlength="255"
+                    required
+                >
+
+                <input
+                    type="datetime-local"
+                    id="dueDateInput"
+                    name="due_date"
+                    required
+                >
+
+                <button type="submit" id="taskSubmitButton">Add Task</button>
+            </form>
+
+            <small class="error-text" id="taskError"></small>
+        </section>
+
+        <section class="dashboard-card task-list-card">
+            <div class="task-list-header">
+                <h2>Task List</h2>
+                <input type="text" id="taskSearch" placeholder="Search tasks...">
+            </div>
+
+            {% if tasks %}
+                <ul id="taskList" class="task-list">
+                    {% for task in tasks %}
+                        <li class="task-item {% if task.status == 'done' %}done{% endif %}" data-task-text="{{ task.task|lower }}">
+                            <div class="task-main">
+                                <div class="task-top-row">
+                                    <span class="task-title">{{ task.task }}</span>
+                                    <span class="task-status {{ task.status }}">{{ task.status }}</span>
+                                </div>
+
+                                <div class="task-meta">
+                                    <span class="meta-label">Due:</span>
+                                    <span class="meta-value">{{ task.due_date }}</span>
+                                </div>
+
+                                <div class="progress-info">
+                                    <span>Progress</span>
+                                    <span>{{ task.progress }}%</span>
+                                </div>
+
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: {{ task.progress }}%;"></div>
+                                </div>
+
+                                <form method="POST"
+                                      action="{{ url_for('task.update_progress', task_id=task.id) }}"
+                                      class="progress-form">
+                                    <input
+                                        type="range"
+                                        name="progress"
+                                        min="0"
+                                        max="100"
+                                        value="{{ task.progress }}"
+                                        class="progress-slider"
+                                    >
+                                    <button type="submit" class="action-btn update-btn">Update</button>
+                                </form>
+                            </div>
+
+                            <div class="task-actions">
+                                {% if task.status == 'pending' %}
+                                    <form method="POST" action="{{ url_for('task.complete_task', task_id=task.id) }}">
+                                        <button type="submit" class="action-btn complete-btn">Done</button>
+                                    </form>
+                                {% else %}
+                                    <form method="POST" action="{{ url_for('task.pending_task', task_id=task.id) }}">
+                                        <button type="submit" class="action-btn pending-btn">Undo</button>
+                                    </form>
+                                {% endif %}
+
+                                <form method="POST" action="{{ url_for('task.delete_task', task_id=task.id) }}" class="delete-form">
+                                    <button type="submit" class="action-btn delete-btn">Delete</button>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <p id="emptySearchState" class="empty-state hidden">No matching tasks found.</p>
+            {% else %}
+                <p class="empty-state">No tasks yet. Add your first task.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/ManageTask.js') }}"></script>
+</body>
+</html>

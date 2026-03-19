@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Task Managers 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Login.css') }}">
+</head>
+<body>
+    <div class="auth-shell">
+        <div class="auth-card">
+            <h2>Login</h2>
+            <p class="subtitle">Welcome back.</p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-area">
+                        {% for category, message in messages %}
+                            <div class="flash-message {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" id="loginForm" novalidate>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" placeholder="Enter your email" required>
+                    <small class="error-text" id="emailError"></small>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" placeholder="Enter your password" required>
+                    <small class="error-text" id="passwordError"></small>
+                </div>
+
+                <button type="submit" id="loginButton">Login</button>
+            </form>
+
+            <div class="auth-links">
+                <a href="{{ url_for('forget.forget') }}">Forgot Password?</a>
+                <a href="{{ url_for('signup.signup') }}">Create a new account</a>
+                <a href="{{ url_for('login.index') }}">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/Login.js') }}"></script>
+</body>
+</html>

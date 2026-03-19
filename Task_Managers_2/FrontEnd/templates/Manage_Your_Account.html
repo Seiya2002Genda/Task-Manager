@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - Task Managers 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Manage_Your_Account.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">Task Managers 2</div>
+        <nav class="topbar-nav">
+            <a href="{{ url_for('task.manage_task') }}">Tasks</a>
+            <a href="{{ url_for('login.logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <main class="account-page">
+        <section class="account-card">
+            <h1>My Account</h1>
+            <p class="subtitle">Your profile and activity summary.</p>
+
+            <div class="info-grid">
+                <div class="info-row">
+                    <span class="label">Email</span>
+                    <span class="value" id="emailValue">{{ user.email }}</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="label">Created</span>
+                    <span class="value">{{ user.created_at }}</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="label">Total Tasks</span>
+                    <span class="value">{{ user.total_tasks or 0 }}</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="label">Pending Tasks</span>
+                    <span class="value">{{ user.pending_tasks or 0 }}</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="label">Done Tasks</span>
+                    <span class="value">{{ user.done_tasks or 0 }}</span>
+                </div>
+            </div>
+
+            <div class="account-actions">
+                <button id="copyEmailButton" type="button">Copy Email</button>
+                <a href="{{ url_for('task.manage_task') }}" class="back-link">Back to Tasks</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/Manage_Your_Account.js') }}"></script>
+</body>
+</html>
