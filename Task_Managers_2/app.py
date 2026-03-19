@@ -1,15 +1,15 @@
 import os
 
 from flask import Flask
-from Backend.Config import Config
-from Backend.CreateDatabase import CreateDatabase
-from Backend.Verification import mail
+from Task_Managers_2.Backend.Config import Config
+from Task_Managers_2.Backend.CreateDatabase import CreateDatabase
+from Task_Managers_2.Backend.Verification import mail
 
-from Backend.BluePrint.Login import login_bp
-from Backend.BluePrint.Signup import signup_bp
-from Backend.BluePrint.Forget_password import forget_bp
-from Backend.BluePrint.ManageTask import task_bp
-from Backend.BluePrint.Manage_Your_Account import account_bp
+from Task_Managers_2.Backend.BluePrint.Login import login_bp
+from Task_Managers_2.Backend.BluePrint.Signup import signup_bp
+from Task_Managers_2.Backend.BluePrint.Forget_password import forget_bp
+from Task_Managers_2.Backend.BluePrint.ManageTask import task_bp
+from Task_Managers_2.Backend.BluePrint.Manage_Your_Account import account_bp
 
 def create_app():
     app = Flask(
