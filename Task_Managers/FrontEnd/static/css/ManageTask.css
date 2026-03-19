@@ -1,0 +1,31 @@
+body{
+    font-family:Arial;
+    background:#f1f5f9;
+}
+header{
+    background:#1e3a8a;
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+}
+.container{
+    width:700px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+ul{list-style:none;margin-top:20px;}
+li{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    justify-content:space-between;
+}
+.delete-btn{
+    background:red;
+    color:white;
+    border:none;
+    padding:5px 10px;
+}

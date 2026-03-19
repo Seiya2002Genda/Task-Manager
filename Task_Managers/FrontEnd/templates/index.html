@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Task Manager</h1>
+
+    <div class="buttons">
+        <a href="{{ url_for('login.login') }}">Login</a>
+        <a href="{{ url_for('signup.signup') }}">Signup</a>
+    </div>
+</div>
+
+</body>
+</html>

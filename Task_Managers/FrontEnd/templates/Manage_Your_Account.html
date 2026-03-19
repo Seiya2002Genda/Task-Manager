@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Manage_Your_Account.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Your Account</h2>
+
+    <p>Email: {{ user.email }}</p>
+
+    <a href="{{ url_for('task.manage_task') }}">Back to Tasks</a>
+</div>
+
+</body>
+</html>

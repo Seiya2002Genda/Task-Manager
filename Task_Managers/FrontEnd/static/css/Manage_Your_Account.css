@@ -1,0 +1,13 @@
+body{
+    background:#f1f5f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+}

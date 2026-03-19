@@ -1,0 +1,7 @@
+@import url("index.css");
+
+input[name="otp"]{
+    text-align:center;
+    letter-spacing:5px;
+    font-size:20px;
+}
