@@ -158,7 +158,11 @@ http://127.0.0.1:5000
 
 ## 📸 Screenshots
 
-(Add screenshots here if needed)
+<img width="1916" height="909" alt="Screenshot 2026-03-19 050645" src="https://github.com/user-attachments/assets/430608f5-35b5-4f0e-bf1d-6e509f4eb118" />
+<img width="1917" height="906" alt="Screenshot 2026-03-19 050656" src="https://github.com/user-attachments/assets/0cb023cb-e509-4d06-ac06-ac95357f31f6" />
+<img width="1915" height="903" alt="Screenshot 2026-03-19 050703" src="https://github.com/user-attachments/assets/ee4aaa8f-259c-435b-831e-322a74a96dc8" />
+
+
 
 ---
 
